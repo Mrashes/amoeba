@@ -3,19 +3,47 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+	constructor() {
+		super();
+		this.state = {
+			currentItem: '',
+			username: '',
+			items: []
+		}
+	}
+  
+  handleChange(e) {
+
   }
+
+  handleSubmit(e) {
+
+	}
+
+	removeItem(itemId) {
+
+	}
+
+
+	componentDidMount() {
+
+	}
+
+	
+	render() {
+		return (
+      <div>
+        <div>Manage My Items</div>
+        <form>
+          <input type="input"/>
+          <input type="submit"/>
+        </form>
+        <div>My Items (0)</div>
+      </div>
+      
+
+		);
+	}
 }
 
 export default App;

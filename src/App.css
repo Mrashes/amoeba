@@ -22,3 +22,10 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.colors {
+  #e4f0f9 - lavander
+  #d7d2cb - light Gray
+  #ddc9a2 - burly wood
+  #c28ea0 - Rosey Brown
+}
