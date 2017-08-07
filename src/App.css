@@ -1,3 +1,5 @@
+/* My writing */
+
 .App {
   text-align: center;
 }
@@ -21,6 +23,44 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+body {
+  height: 100%;
+}
+
+.header {
+  text-align: center;
+  background-color: #e4f0f9;
+  /* display: flex; */
+}
+
+.add-item {
+  background-color: #d7d2cb;
+}
+
+.container {
+  background-color: #ddc9a2;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+
+.display-item {
+  margin: auto;
+}
+
+.wrapper li{
+  background-color: #c28ea0;
+  width: 300px;
+  text-align: center;
+  display: list-item;
+  margin-bottom: 5px;
+}
+
+.wrapper ul {
+  list-style-type: none;
 }
 
 /* .colors {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
+// import './reset.css';
 import firebase from './firebase.js'
 
 class App extends Component {
@@ -63,18 +64,24 @@ class App extends Component {
 	render() {
 		return (
 			<div className='app'>
-				<header>
+				<header className='header'>
 						<div className='wrapper'>
 							<h1>Manage My Items</h1>
 						</div>
-				</header>
-				<div className='container'>
-					<section className='add-item'>
+						<section className='add-item'>
 							<form onSubmit={this.handleSubmit}>
 								<input type="text" name="currentItem" placeholder="What do you want to do?" onChange={this.handleChange} value={this.state.currentItem} />
 								<button>Add Item</button>
 							</form>
 					</section>
+				</header>
+				<div className='container'>
+					{/* <section className='add-item'>
+							<form onSubmit={this.handleSubmit}>
+								<input type="text" name="currentItem" placeholder="What do you want to do?" onChange={this.handleChange} value={this.state.currentItem} />
+								<button>Add Item</button>
+							</form>
+					</section> */}
 					<div className='total'>
 						<p>My Items ({this.state.items.length})</p>
 					</div>
@@ -89,10 +96,10 @@ class App extends Component {
 					    <ul>
 					      {this.state.items.map((item) => {
 					        return (
-					          <li key={item.id}>
-					            <span>{item.title}</span>
-					            <button onClick={() => this.removeItem(item.id)}>X</button>
-					          </li>
+										<li key={item.id}>
+											<p>{item.title}</p>
+											<button onClick={() => this.removeItem(item.id)}>X</button>
+										</li>
 					        )
 					      })}
 					    </ul>
