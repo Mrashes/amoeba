@@ -29,6 +29,17 @@ class App extends React.Component {
 			<div>
         <ItemCreate/>
         <Todo/> 
+
+          {/* Legacy code from fun freinds food to try understadning how to map? 
+        {this.state.items.map((item) => {
+          return (
+            <li key={item.id}>
+              <h3>{item.title}</h3>
+              <p>brought by: {item.user}</p>
+              <button onClick={() => this.removeItem(item.id)}>Remove Item</button>
+            </li>
+          )
+        })}         */}
 			</div>
     );
   }

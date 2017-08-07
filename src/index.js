@@ -7,14 +7,3 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
-
-
-// function Welcome(props) {
-//   return <h1>Hello, {props.name}</h1>;
-// }
-
-// const element = <div><Welcome name="Sara" /><Todo/></div>;
-// ReactDOM.render(
-//   element,
-//   document.getElementById('root')
-// );

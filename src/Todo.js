@@ -18,15 +18,18 @@ class Todo extends React.Component {
     // this.setState({todo: event.target.value});
   }
 
-  handleSubmit(event) {
-    // alert('A name was submitted: ' + this.state.value);
-		// event.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.setState({
+        //This clicks doesn't increment the other clicks...  I don't know how to put the two together.
+        clicks: this.state.clicks + 1
+    })
   }
     
   render() {
     return (
       <div>
-          <p>This is where the Item to do goes</p> <button>X</button>
+          <p>This is where the Item to do goes</p> <button >X</button>
       </div>
     );
   }
