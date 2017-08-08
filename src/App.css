@@ -44,24 +44,46 @@ body {
   height: 100%;
   display: flex;
   flex-flow: column;
-  text-align: center;
+   text-align: center; 
+   margin: auto; 
+  /* width: x; */
 }
 
 .display-item {
   margin: auto;
 }
 
+/* .title {
+  flex: right;
+} */
+
+.total {
+  text-align: left;
+  width: 300px;
+  margin-left: 35%;
+  padding-top: 2%;
+  font-weight: bold;
+}
+
+
 .wrapper li{
   background-color: #c28ea0;
   width: 300px;
   text-align: center;
-  display: list-item;
+  display: flex;
   margin-bottom: 5px;
+  justify-content: space-between;
+  padding: 10px;
+  color: white
 }
 
 .wrapper ul {
   list-style-type: none;
 }
+
+/* .xButton {
+  flex: left
+} */
 
 /* .colors {
   #e4f0f9 - lavander

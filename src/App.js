@@ -5,15 +5,10 @@ import './App.css';
 import firebase from './firebase.js'
 
 class App extends Component {
-	constructor() {
-		super();
-		this.state = {
+	state = {
 			currentItem: '',
 			items: []
 		}
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
   
   handleChange = (e) => {
     this.setState({
@@ -76,12 +71,6 @@ class App extends Component {
 					</section>
 				</header>
 				<div className='container'>
-					{/* <section className='add-item'>
-							<form onSubmit={this.handleSubmit}>
-								<input type="text" name="currentItem" placeholder="What do you want to do?" onChange={this.handleChange} value={this.state.currentItem} />
-								<button>Add Item</button>
-							</form>
-					</section> */}
 					<div className='total'>
 						<p>My Items ({this.state.items.length})</p>
 					</div>
@@ -97,8 +86,8 @@ class App extends Component {
 					      {this.state.items.map((item) => {
 					        return (
 										<li key={item.id}>
-											<p>{item.title}</p>
-											<button onClick={() => this.removeItem(item.id)}>X</button>
+											<span className="title">{item.title}</span>
+											<button onClick={() => this.removeItem(item.id)} className="xButton">X</button>
 										</li>
 					        )
 					      })}
