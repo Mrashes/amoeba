@@ -9,34 +9,11 @@ class App extends Component {
 			currentItem: '',
 			items: []
 		}
-  
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
-
-  handleSubmit = (e) => {
-	  e.preventDefault();
-	  const itemsRef = firebase.database().ref('items');
-	  const item = {
-	    title: this.state.currentItem,
-	  }
-	  itemsRef.push(item);
-	  this.setState({
-	    currentItem: ''
-	  });
-
-		// itemsRef.on('value', (snapshot) => {
-		//   console.log(snapshot.val());
-		// });
-	}
-
+	
 	removeItem = (itemId) => {
 	  const itemRef = firebase.database().ref(`/items/${itemId}`);
 	  itemRef.remove();
 	}
-
 
 	componentDidMount = () => {
 	  const itemsRef = firebase.database().ref('items');
@@ -55,7 +32,6 @@ class App extends Component {
 	  });
 	}
 
-	
 	render() {
 		return (
 			<div className='app'>
@@ -65,10 +41,10 @@ class App extends Component {
 						</div>
 						<section className='add-item'>
 							<form onSubmit={this.handleSubmit}>
-								<input type="text" name="currentItem" placeholder="What do you want to do?" onChange={this.handleChange} value={this.state.currentItem} />
-								<button>Add Item</button>
+									<input type="text" name="currentItem" placeholder="What do you want to do?" onChange={this.handleChange} value={this.state.currentItem} />
+									<button>Add Item</button>
 							</form>
-					</section>
+						</section>
 				</header>
 				<div className='container'>
 					<div className='total'>

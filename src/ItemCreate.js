@@ -19,7 +19,7 @@ class ItemCreate extends React.Component {
         return (
             <div>
                 <div>Click button to make new thing to do</div>
-                {/* <input type="input" name="todo"/> */}
+                 <input type="input" name="todo"/> 
                 <input type="submit" onClick={this.addItem}/>
                 <div>My Items {this.state.clicks}</div>
                 {/* <div>{this.state.clicks}</div> */}
