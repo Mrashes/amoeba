@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
+import Header from './header'
+import List from './list'
+import Input from './input'
 import './App.css';
 // import './reset.css';
+
+function Store(initialState = {}) {
+	this.state = initialState;
+}
+Store.prototype.mergeState = function(partialState) {
+	Object.assign(this.state, partialState);
+};
+
+var myStore = new Store();
 
 class App extends Component {
 	state = {
@@ -9,22 +21,22 @@ class App extends Component {
 			items: []
 		}
   
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
+  // handleChange = (e) => {
+  //   this.setState({
+  //     [e.target.name]: e.target.value
+  //   });
+  // }
 
-  handleSubmit = (e) => {
-	  e.preventDefault();
-	  const item = {
-	    title: this.state.currentItem,
-	  }
-	  this.state.items.push(item);
-	  this.setState({
-	    currentItem: ''
-	  });
-	}
+  // handleSubmit = (e) => {
+	//   e.preventDefault();
+	//   const item = {
+	//     title: this.state.currentItem,
+	//   }
+	//   this.state.items.push(item);
+	//   this.setState({
+	//     currentItem: ''
+	//   });
+	// }
 
 	removeItem = (item) => {
 		let array = this.state.items;
@@ -37,42 +49,9 @@ class App extends Component {
 	render() {
 		return (
 			<div className='app'>
-				<header className='header'>
-						<div className='wrapper'>
-							<h1>Manage My Items</h1>
-						</div>
-						<section className='add-item'>
-							<form onSubmit={this.handleSubmit}>
-									<input type="text" name="currentItem" placeholder="What do you want to do?" onChange={this.handleChange} value={this.state.currentItem} />
-									<button>Add Item</button>
-							</form>
-						</section>
-				</header>
-				<div className='container'>
-					<div className='total'>
-						<p>My Items ({this.state.items.length})</p>
-					</div>
-					<section className='display-item'>
-						<div className='wrapper'>
-							<ul>
-							</ul>
-						</div>
-					</section>
-					<section className='display-item'>
-					  <div className="wrapper">
-					    <ul>
-					      {this.state.items.map((item) => {
-					        return (
-										<li key={item.id}>
-											<span className="title">{item.title}</span>
-											<button onClick={() => this.removeItem(item)} className="xButton">X</button>
-										</li>
-					        )
-					      })}
-					    </ul>
-					  </div>
-					</section>
-				</div>
+					<Header mergeState={myStore.mergeState.bind(myStore)}/>
+					<Input mergeState={myStore.mergeState.bind(myStore)}/>
+					<List mergeState={myStore.mergeState.bind(myStore)}/>
 			</div>
 		);
 	}
