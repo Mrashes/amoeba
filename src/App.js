@@ -34,6 +34,7 @@ class App extends Component {
 		this.setState({items: array });
 	}
 	
+
 	render() {
 		return (
 			<div className='app'>
@@ -43,10 +44,10 @@ class App extends Component {
 						</div>
 						<section className='add-item'>
 							<form onSubmit={this.handleSubmit}>
-								<input type="text" name="currentItem" placeholder="What do you want to do?" onChange={this.handleChange} value={this.state.currentItem} />
-								<button>Add Item</button>
+									<input type="text" name="currentItem" placeholder="What do you want to do?" onChange={this.handleChange} value={this.state.currentItem} />
+									<button>Add Item</button>
 							</form>
-					</section>
+						</section>
 				</header>
 				<div className='container'>
 					<div className='total'>
