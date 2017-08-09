@@ -2,35 +2,38 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 // import './reset.css';
-import firebase from './firebase.js'
+// import firebase from './firebase.js'
 
 class App extends Component {
 	state = {
 			currentItem: '',
 			items: []
 		}
-	
-	removeItem = (itemId) => {
-	  const itemRef = firebase.database().ref(`/items/${itemId}`);
-	  itemRef.remove();
-	}
+  
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
 
-	componentDidMount = () => {
-	  const itemsRef = firebase.database().ref('items');
-	  itemsRef.on('value', (snapshot) => {
-	    let items = snapshot.val();
-	    let newState = [];
-	    for (let item in items) {
-	      newState.push({
-	        id: item,
-	        title: items[item].title,
-	      });
-	    }
-	    this.setState({
-	      items: newState
-	    });
+  handleSubmit = (e) => {
+	  e.preventDefault();
+	  const item = {
+	    title: this.state.currentItem,
+	  }
+	  this.state.items.push(item);
+	  this.setState({
+	    currentItem: ''
 	  });
 	}
+
+	removeItem = (item) => {
+		let array = this.state.items;
+		let index = array.indexOf(item)
+		array.splice(index, 1);
+		this.setState({items: array });
+	}
+	
 
 	render() {
 		return (
@@ -63,7 +66,7 @@ class App extends Component {
 					        return (
 										<li key={item.id}>
 											<span className="title">{item.title}</span>
-											<button onClick={() => this.removeItem(item.id)} className="xButton">X</button>
+											<button onClick={() => this.removeItem(item)} className="xButton">X</button>
 										</li>
 					        )
 					      })}
