@@ -104,8 +104,9 @@ class App extends Component {
 	render() {
 		return (
 			<div className='app'>
-        <Header />
+
 				<header className='header'>
+        	<Header />
           <AddTodo handleChange={this.handleChange} handleSubmit={this.handleSubmit} currentItem={this.state.currentItem}/>
 				</header>
 				<div className='container'>
