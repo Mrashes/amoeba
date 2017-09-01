@@ -15,6 +15,73 @@ Store.prototype.mergeState = function(partialState) {
 
 var myStore = new Store();
 
+class Header extends Component {
+  render () {
+    return (
+      <header className='header'>
+        <div className='wrapper'>
+          <h1>Manage My Items</h1>
+        </div>
+      </header>      
+    )
+  }
+}
+
+class AddTodo extends Component {
+  render () {
+    return (
+      <section className='add-item'>
+          <form onSubmit={this.props.handleSubmit}>
+            <input type="text" name="currentItem" placeholder="What do you want to do?" onChange={this.props.handleChange} value={this.props.currentItem} />
+            <button>Add Item</button>
+          </form>
+      </section>
+    )
+  }
+}
+
+class Myitems extends Component {
+  render () {
+    return (
+      <div className='total'>
+        <p>My Items ({this.props.items.length})</p>
+      </div>
+    )
+  }
+}
+
+class Itemmap extends Component {
+  render () {
+    return (
+      <div>
+        <section className='display-item'>
+          <div className='wrapper'>
+            <ul>
+            </ul>
+          </div>
+        </section>
+        <section className='display-item'>
+          <div className="wrapper">
+            <ul>
+              {this.props.items.map((item) => {
+                return (
+                  <li key={item.id}>
+                    <span className="title">{item.title}</span>
+                    <button onClick={() => this.props.removeItem(item)} className="xButton">X</button>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </section>
+      </div>
+
+    )
+  }
+}
+
+
+
 class App extends Component {
 	state = {
 			currentItem: '',
@@ -49,9 +116,16 @@ class App extends Component {
 	render() {
 		return (
 			<div className='app'>
-					<Header mergeState={myStore.mergeState.bind(myStore)}/>
-					<Input mergeState={myStore.mergeState.bind(myStore)}/>
-					<List mergeState={myStore.mergeState.bind(myStore)}/>
+
+				<header className='header'>
+        	<Header />
+          <AddTodo handleChange={this.handleChange} handleSubmit={this.handleSubmit} currentItem={this.state.currentItem}/>
+				</header>
+				<div className='container'>
+          <Myitems items={this.state.items}/>
+          <Itemmap items={this.state.items} removeItem={this.removeItem}/>
+				</div>
+
 			</div>
 		);
 	}
