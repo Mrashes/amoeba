@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import Input from './input'
 
-class Header extends Component {
+class HeaderTodo extends Component {
 	render() {
 		return (
             <header className='header'>
@@ -13,4 +13,4 @@ class Header extends Component {
     }
 };
 
-export default Header;
+export default HeaderTodo;
